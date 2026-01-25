@@ -1,4 +1,58 @@
-![Screenshot (55)](https://github.com/user-attachments/assets/4d0c608b-5089-482a-a4c1-a1f312dfd76d)
-<p align="left"><b>Amazon Clone</b><br><br>A static and powerful frontend Amazon clone built with HTML, CSS, and JavaScript. The project includes a login and signup page, featuring a professional design that replicates the user interface of Amazon.<br><br><b>Features</b><br>Professional Design: A highly polished user interface mimicking the look and feel of Amazon.<br>Login and Signup Pages: Fully designed and functional login and signup forms.<br>Responsive Design: Fully responsive, ensuring a seamless experience across various devices and screen sizes.<br>Image Slider on Homepage: Engaging image slider showcasing products similar to Amazon.<br>Static Pages: No backend or database integration – purely a frontend project.<br><b>Built With</b><br>HTML5: For structuring the content and creating semantic web pages.<br>CSS3: For styling the user interface, including advanced CSS techniques like Flexbox and Grid.<br>JavaScript (ES6): For interactive elements such as form validation, image slider, and dynamic behaviors.<br>Responsive Design: Ensuring compatibility with various screen sizes and devices.<br>Pages<br>Home Page:<br><br>A static replica of the Amazon home page.<br>Includes a professional header, navigation bar, and product display.<br>Image slider featuring multiple product images.<br>Login Page:<br><br>Designed to allow users to enter their login credentials.<br>Includes form validation using JavaScript.<br>Features a professional and clean interface.<br>Signup Page:<br><br>A sign-up form with input fields for user registration.<br>Includes basic form validation (username, email, password).<br>Consistent design with the login page for a unified user experience.<br><br><b>Future Enhancements</b><br>Although this project is a static clone, future improvements could include:<br><br>Backend Integration: Adding a server to handle authentication and user management.<br>Database Integration: Store user credentials in a database for persistent login and signup.<br>Shopping Cart: Implement a dynamic shopping cart feature.<br>Product Pages: Dynamically load and display individual product details.<br><br><b>Technologies Used</b><br>HTML5: Semantic and structured HTML for the layout.<br>CSS3: Advanced styling using Flexbox, Grid, and responsive design techniques.<br>JavaScript (ES6): For form validation and interactive components like the image slider.</p>
+🚀 Amazon Clone Automation Framework
 
-###
+A Cypress-based automation framework for an Amazon Clone application using BDD (Cucumber), Page Object Model (POM), and Jenkins CI/CD.
+This project showcases real-world QA automation practices used in modern teams.
+
+🛠 Tech Stack
+
+🧪 Cypress
+
+🥒 Cucumber (BDD)
+
+🧱 Page Object Model (POM)
+
+⚙️ Jenkins
+
+🌐 JavaScript | Node.js
+
+📂 Project Highlights
+
+BDD scenarios written in Gherkin
+
+Clean POM architecture
+
+UI validations (search bar, logo, carts)
+
+Cart & product section verification
+
+Broken image/link checks using cy.request
+
+Quantity dropdown validation
+
+🥒 Sample BDD Scenarios
+
+Scenario: Open Amazon clone homepage
+Given I open the Amazon clone homepage
+Then the search input should be visible
+And the Amazon logo image should be displayed
+
+Scenario: Open Amazon homepage
+Given I open the Amazon Page
+Then Verify the Carts
+
+⚙️ Jenkins Integration
+
+Pulls latest code from GitHub
+
+Installs dependencies automatically
+
+Runs Cypress tests in headless mode
+
+Fails build on test failure ❌
+
+Run Tests
+npm install
+npx cypress run
+
+
+Fully CI integrated with Jenkins
