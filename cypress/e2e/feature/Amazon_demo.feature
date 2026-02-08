@@ -1,5 +1,6 @@
-Feature: Amazon Clone
+Feature: Amazon Clone Smoke Tests
 
+  @smoke
   Scenario: Open Amazon clone homepage
     Given I open the Amazon clone homepage
     Then the search input should be visible

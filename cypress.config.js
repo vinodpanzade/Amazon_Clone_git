@@ -53,7 +53,10 @@ module.exports = defineConfig({
 
   e2e: {
     specPattern: "**/*.feature",
-
+      // ✅ ADD TAG FILTER HERE
+    env: {
+      TAGS: "@smoke"   // change to @regression when needed
+    },
     async setupNodeEvents(on, config) {
       // BDD plugin
       await addCucumberPreprocessorPlugin(on, config);
