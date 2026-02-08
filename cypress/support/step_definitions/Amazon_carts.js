@@ -8,7 +8,7 @@ Given("I open the Amazon Page",()=>{
 })
 
 Then("Verify the Carts",()=>{
-    // amazon_cart.cart();
-     //amazon_cart.Slider()
+     amazon_cart.cart();
+     amazon_cart.Slider()
      amazon_cart.Add_to_Cart()
 })
