@@ -8,8 +8,6 @@ Given("I open the Amazon clone homepage",()=>{
    amazon.amazonvisit();
 
 })
-
-
 Then("the search input should be visible",()=>{
     amazon.amazontest();
 })
