@@ -9,5 +9,5 @@ class Amazon{
         cy.get("a>img").should("have.attr","src").and("include","amazon_logo.png")
     }
 }
-//made changes here also then now tell mw i am going to add this thing 
+
 export default  Amazon
