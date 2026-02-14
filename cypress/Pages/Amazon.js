@@ -6,7 +6,7 @@ class Amazon{
     }
     amazontest(){
         cy.get(".search-input").should("exist")
-    cy.get("a>img").should("have.attr","src").and("include","amazon_logo.png")
+        cy.get("a>img").should("have.attr","src").and("include","amazon_logo.png")
     }
 }
 export default  Amazon
