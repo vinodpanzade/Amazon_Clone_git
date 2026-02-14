@@ -8,7 +8,7 @@ Given("I open the Amazon clone homepage",()=>{
    amazon.amazonvisit();
 
 })
-//Now I made changes ok
+
 
 Then("the search input should be visible",()=>{
     amazon.amazontest();
@@ -17,4 +17,5 @@ Then("the search input should be visible",()=>{
 Then("the Amazon logo image should be displayed",()=>{
     amazon.amazontest();
 })
+//commit now doing 
 
