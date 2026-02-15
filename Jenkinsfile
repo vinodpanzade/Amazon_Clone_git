@@ -40,9 +40,23 @@ pipeline {
   }
 }
 
-        stage('Run Cypress Tests') {
-            steps {
-                bat 'npx cypress run'
+        // stage('Run Cypress Tests') {
+        //     steps {
+        //         bat 'npx cypress run'
+        //     }
+        // }
+        stage("Parallel Tests"){
+            parallel {
+                stage("Smoke"){
+                    steps{
+                        bat 'npx cypress run --env TAGS="@smoke"'
+                    }
+                }
+                stage("Regression"){
+                    steps{
+                        bat 'npx cypress run --env TAGS="@regression"'
+                    }
+                }
             }
         }
         stage('Generate Cypress HTML Report') {
@@ -58,8 +72,10 @@ pipeline {
             echo '✅ Build passed: Cypress tests successful'
         }
         failure {
-            echo '❌ Build failed: Check Cypress/Jenkins logs'
-        }
+              mail to: 'vinodpanzade64@gmail.com',
+             subject: "Build Failed in develope",
+             body: "Check Jenkins"
+               }
        always {
     script {
       publishHTML([
