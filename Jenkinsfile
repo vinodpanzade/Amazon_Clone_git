@@ -40,11 +40,46 @@ pipeline {
   }
 }
 
-        stage('Run Cypress Tests') {
-            steps {
-                bat 'npx cypress run'
-            }
-        }
+        // stage('Run Cypress Tests') {
+        //     steps {
+        //         bat 'npx cypress run'
+        //     }
+        // }
+
+        //parallel running the type of testing
+
+        // stage("Parallel Tests"){
+        //     parallel {
+        //         stage("Smoke"){
+        //             steps{
+        //                 bat 'npx cypress run --env TAGS="@smoke"'
+        //             }
+        //         }
+        //         stage("Regression"){
+        //             steps{
+        //                 bat 'npx cypress run --env TAGS="@regression"'
+        //             }
+        //         }
+        //     }
+        // }
+        stage("Smoke Tests"){
+    steps{
+        bat 'npx cypress run --env TAGS="@smoke"'
+    }
+}
+
+stage("Regression Tests"){
+    steps{
+        bat 'npx cypress run --env TAGS="@regression"'
+    }
+}
+
+stage("UAT Tests"){
+    steps{
+        bat 'npx cypress run --env TAGS="@UAT"'
+    }
+}
+
         stage('Generate Cypress HTML Report') {
   steps {
     bat 'npm run report:merge'
