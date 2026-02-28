@@ -80,8 +80,6 @@ stage("UAT Tests"){
     }
 }
 
-     
-
         stage('Generate Cypress HTML Report') {
   steps {
     bat 'npm run report:merge'
