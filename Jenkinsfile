@@ -9,7 +9,7 @@ pipeline {
 
         stage('Checkout Code') {
             steps {
-                git branch: 'develop',
+                git branch: 'main',
                     url: 'https://github.com/vinodpanzade/Amazon_clone_git.git'
             }
         }
@@ -40,23 +40,9 @@ pipeline {
   }
 }
 
-        // stage('Run Cypress Tests') {
-        //     steps {
-        //         bat 'npx cypress run'
-        //     }
-        // }
-        stage("Parallel Tests"){
-            parallel {
-                stage("Smoke"){
-                    steps{
-                        bat 'npx cypress run --env TAGS="@smoke"'
-                    }
-                }
-                stage("Regression"){
-                    steps{
-                        bat 'npx cypress run --env TAGS="@regression"'
-                    }
-                }
+        stage('Run Cypress Tests') {
+            steps {
+                bat 'npx cypress run'
             }
         }
         stage('Generate Cypress HTML Report') {
@@ -72,10 +58,8 @@ pipeline {
             echo '✅ Build passed: Cypress tests successful'
         }
         failure {
-              mail to: 'vinodpanzade64@gmail.com',
-             subject: "Build Failed in develope",
-             body: "Check Jenkins"
-               }
+            echo '❌ Build failed: Check Cypress/Jenkins logs'
+        }
        always {
     script {
       publishHTML([
