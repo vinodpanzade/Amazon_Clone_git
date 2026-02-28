@@ -9,7 +9,7 @@ pipeline {
 
         stage('Checkout Code') {
             steps {
-                git branch: 'develop',
+                git branch: 'main',
                     url: 'https://github.com/vinodpanzade/Amazon_clone_git.git'
             }
         }
@@ -93,10 +93,8 @@ stage("UAT Tests"){
             echo '✅ Build passed: Cypress tests successful'
         }
         failure {
-              mail to: 'vinodpanzade64@gmail.com',
-             subject: "Build Failed in develope",
-             body: "Check Jenkins"
-               }
+            echo '❌ Build failed: Check Cypress/Jenkins logs'
+        }
        always {
     script {
       publishHTML([
