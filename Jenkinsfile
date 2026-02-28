@@ -9,7 +9,7 @@ pipeline {
 
         stage('Checkout Code') {
             steps {
-                git branch: 'main',
+                git branch: 'develop',
                     url: 'https://github.com/vinodpanzade/Amazon_clone_git.git'
             }
         }
