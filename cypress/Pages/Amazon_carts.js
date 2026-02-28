@@ -6,6 +6,7 @@ class Amazon_carts{
     }
 
     cart(){
+        
          const headings=["Free international returns","Lunar New Year","Toy under $25","Deals in PCs"]
         
         //    cy.get(".header-box>.box-col>h3").should("exist").each(($heading,index)=>{
@@ -17,6 +18,7 @@ class Amazon_carts{
             cy.get(".box-col>h3").contains(data)
             cy.get(".box-row>.box-col>a").contains("Shop More")
         })
+
 
         const heading2=["Grooming Products","Latest Devices","Pets Food","Fashion Mart"]
 
@@ -35,6 +37,8 @@ class Amazon_carts{
             cy.get(".box-row>.box-col>a").contains("Shop More")
             
         })
+
+    
 
     }
 
@@ -70,7 +74,5 @@ class Amazon_carts{
 
     }
 
-
 }
-
 export default Amazon_carts
