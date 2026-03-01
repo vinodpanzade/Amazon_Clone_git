@@ -60,7 +60,7 @@ pipeline {
                         bat 'npx cypress run --env TAGS="@regression"'
                     }
                 }
-                   stage("Regression"){
+                   stage("UAT"){
                     steps{
                         bat 'npx cypress run --env TAGS="@UAT"'
                     }
