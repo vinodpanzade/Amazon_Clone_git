@@ -48,37 +48,44 @@ pipeline {
 
         //parallel running the type of testing
 
-        // stage("Parallel Tests"){
-        //     parallel {
-        //         stage("Smoke"){
-        //             steps{
-        //                 bat 'npx cypress run --env TAGS="@smoke"'
-        //             }
-        //         }
-        //         stage("Regression"){
-        //             steps{
-        //                 bat 'npx cypress run --env TAGS="@regression"'
-        //             }
-        //         }
-        //     }
-        // }
-        stage("Smoke Tests"){
-    steps{
-        bat 'npx cypress run --env TAGS="@smoke"'
-    }
-}
+        stage("Parallel Tests"){
+            parallel {
+                stage("Smoke"){
+                    steps{
+                        bat 'npx cypress run --env TAGS="@smoke"'
+                    }
+                }
+                stage("Regression"){
+                    steps{
+                        bat 'npx cypress run --env TAGS="@regression"'
+                    }
+                }
+                   stage("Regression"){
+                    steps{
+                        bat 'npx cypress run --env TAGS="@UAT"'
+                    }
+                }
+            }
+        }
 
-stage("Regression Tests"){
-    steps{
-        bat 'npx cypress run --env TAGS="@regression"'
-    }
-}
+        //parallel execution 
+//         stage("Smoke Tests"){
+//     steps{
+//         bat 'npx cypress run --env TAGS="@smoke"'
+//     }
+// }
 
-stage("UAT Tests"){
-    steps{
-        bat 'npx cypress run --env TAGS="@UAT"'
-    }
-}
+// stage("Regression Tests"){
+//     steps{
+//         bat 'npx cypress run --env TAGS="@regression"'
+//     }
+// }
+
+// stage("UAT Tests"){
+//     steps{
+//         bat 'npx cypress run --env TAGS="@UAT"'
+//     }
+// }
 
         stage('Generate Cypress HTML Report') {
   steps {
