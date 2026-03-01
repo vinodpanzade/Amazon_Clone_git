@@ -48,44 +48,39 @@ pipeline {
 
         //parallel running the type of testing
 
-        stage("Parallel Tests"){
-            parallel {
-                stage("Smoke"){
-                    steps{
-                        bat 'npx cypress run --env TAGS="@smoke"'
-                    }
-                }
-                stage("Regression"){
-                    steps{
-                        bat 'npx cypress run --env TAGS="@regression"'
-                    }
-                }
-                //    stage("UAT"){
-                //     steps{
-                //         bat 'npx cypress run --env TAGS="@UAT"'
-                //     }
-                // }
-            }
-        }
+        // stage("Parallel Tests"){
+        //     parallel {
+        //         stage("Smoke"){
+        //             steps{
+        //                 bat 'npx cypress run --env TAGS="@smoke"'
+        //             }
+        //         }
+        //         stage("Regression"){
+        //             steps{
+        //                 bat 'npx cypress run --env TAGS="@regression"'
+        //             }
+        //         }
+        //     }
+        // }
+        stage("Smoke Tests"){
+    steps{
+        bat 'npx cypress run --env TAGS="@smoke"'
+    }
+}
 
-        //sequential execution
-//         stage("Smoke Tests"){
-//     steps{
-//         bat 'npx cypress run --env TAGS="@smoke"'
-//     }
-// }
+stage("Regression Tests"){
+    steps{
+        bat 'npx cypress run --env TAGS="@regression"'
+    }
+}
 
-// stage("Regression Tests"){
-//     steps{
-//         bat 'npx cypress run --env TAGS="@regression"'
-//     }
-// }
+stage("UAT Tests"){
+    steps{
+        bat 'npx cypress run --env TAGS="@UAT"'
+    }
+}
 
-// stage("UAT Tests"){
-//     steps{
-//         bat 'npx cypress run --env TAGS="@UAT"'
-//     }
-// }
+     
 
         stage('Generate Cypress HTML Report') {
   steps {
@@ -100,8 +95,10 @@ pipeline {
             echo '✅ Build passed: Cypress tests successful'
         }
         failure {
-            echo '❌ Build failed: Check Cypress/Jenkins logs'
-        }
+              mail to: 'vinodpanzade64@gmail.com',
+             subject: "Build Failed in develope",
+             body: "Check Jenkins"
+               }
        always {
     script {
       publishHTML([
