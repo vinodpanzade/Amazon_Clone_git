@@ -1,5 +1,5 @@
 class Amazon_product {
-// this is new class 
+
     visit(){
         cy.visit("http://127.0.0.1:5501/index.html")
     }
@@ -7,7 +7,7 @@ class Amazon_product {
          cy.get('h2').contains("Best Sellers in Sports & Outdoors")
          cy.get('div.products>img').each((link)=>{
             const url=link.prop('src')
-            cy.log(url)
+            //cy.log(url)
            // cy.request(url).its("status").should("eq",200)
          })
     }
