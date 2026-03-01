@@ -55,11 +55,11 @@ pipeline {
                         bat 'npx cypress run --env TAGS="@smoke"'
                     }
                 }
-                // stage("Regression"){
-                //     steps{
-                //         bat 'npx cypress run --env TAGS="@regression"'
-                //     }
-                // }
+                stage("Regression"){
+                    steps{
+                        bat 'npx cypress run --env TAGS="@regression"'
+                    }
+                }
                 //    stage("UAT"){
                 //     steps{
                 //         bat 'npx cypress run --env TAGS="@UAT"'
@@ -68,7 +68,7 @@ pipeline {
             }
         }
 
-        //parallel execution 
+        //sequential execution
 //         stage("Smoke Tests"){
 //     steps{
 //         bat 'npx cypress run --env TAGS="@smoke"'
