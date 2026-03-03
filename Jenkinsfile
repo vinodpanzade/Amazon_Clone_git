@@ -116,6 +116,48 @@
 //     }
 // }
 
+// pipeline {
+//     agent any
+
+//     tools {
+//         nodejs 'Node20'
+//     }
+
+//     stages {
+
+//         stage('Checkout Code') {
+//             steps {
+//                 git branch: 'develop',
+//                     url: 'https://github.com/vinodpanzade/Amazon_clone_git.git'
+//             }
+//         }
+
+//         stage('Install Dependencies') {
+//             steps {
+//                 bat 'npm ci'
+//             }
+//         }
+
+//         stage('Run Smoke Tests') {
+//             steps {
+//                 bat 'npx cypress run --env TAGS="@smoke"'
+//             }
+//         }
+
+//     }
+
+//     post {
+//         success {
+//             echo '✅ Smoke Tests Passed'
+//         }
+//         failure {
+//             echo '❌ Tests Failed - Check Logs'
+//         }
+//     }
+// }
+
+//Allure result 
+
 pipeline {
     agent any
 
@@ -138,20 +180,45 @@ pipeline {
             }
         }
 
+        stage('Clean Old Allure Results') {
+            steps {
+                bat 'rmdir /s /q allure-results || exit 0'
+            }
+        }
+
         stage('Run Smoke Tests') {
             steps {
                 bat 'npx cypress run --env TAGS="@smoke"'
             }
         }
 
+        stage('Run Regression Tests') {
+            steps {
+                bat 'npx cypress run --env TAGS="@regression"'
+            }
+        }
+
+        stage('Run UAT Tests') {
+            steps {
+                bat 'npx cypress run --env TAGS="@UAT"'
+            }
+        }
+
+        stage('Generate Allure Report') {
+            steps {
+                allure includeProperties: false,
+                       jdk: '',
+                       results: [[path: 'allure-results']]
+            }
+        }
     }
 
     post {
         success {
-            echo '✅ Smoke Tests Passed'
+            echo '✅ All Tests Passed'
         }
         failure {
-            echo '❌ Tests Failed - Check Logs'
+            echo '❌ Some Tests Failed'
         }
     }
 }
