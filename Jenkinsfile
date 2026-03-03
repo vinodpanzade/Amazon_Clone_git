@@ -157,7 +157,6 @@
 // }
 
 //Allure result 
-
 pipeline {
     agent any
 
@@ -203,20 +202,19 @@ pipeline {
                 bat 'npx cypress run --env TAGS="@UAT"'
             }
         }
-
-        stage('Generate Allure Report') {
-            steps {
-                allure includeProperties: false,
-                       jdk: '',
-                       results: [[path: 'allure-results']]
-            }
-        }
     }
 
     post {
+        always {
+            allure(
+                results: [[path: 'allure-results']]
+            )
+        }
+
         success {
             echo '✅ All Tests Passed'
         }
+
         failure {
             echo '❌ Some Tests Failed'
         }
