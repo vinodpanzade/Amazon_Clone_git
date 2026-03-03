@@ -12,4 +12,3 @@ Then("Verify the Carts",()=>{
      amazon_cart.Slider()
      amazon_cart.Add_to_Cart()
 })
-//add c=som comment for the tsting  skndskjfn 
