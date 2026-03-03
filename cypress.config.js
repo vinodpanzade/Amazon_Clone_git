@@ -32,8 +32,6 @@
 // });
 
 
-//for the html report 
-
 const { defineConfig } = require("cypress");
 const createBundler = require("@bahmutov/cypress-esbuild-preprocessor");
 const addCucumberPreprocessorPlugin =
@@ -42,7 +40,6 @@ const createEsbuildPlugin =
   require("@badeball/cypress-cucumber-preprocessor/esbuild").createEsbuildPlugin;
 
 module.exports = defineConfig({
-  // 🔹 REPORT CONFIG (NEW)
   reporter: "mochawesome",
   reporterOptions: {
     reportDir: "cypress/reports",
@@ -53,15 +50,15 @@ module.exports = defineConfig({
 
   e2e: {
     specPattern: "**/*.feature",
-      // ✅ ADD TAG FILTER HERE
+
     env: {
-      TAGS: "@smoke or @regression or @UAT"   // change to @regression when needed
+      TAGS: "@smoke or @regression or @UAT"
     },
+
     async setupNodeEvents(on, config) {
-      // BDD plugin
+
       await addCucumberPreprocessorPlugin(on, config);
 
-      // esbuild for feature files
       on(
         "file:preprocessor",
         createBundler({
