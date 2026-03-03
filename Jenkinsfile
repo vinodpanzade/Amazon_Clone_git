@@ -35,10 +35,10 @@ pipeline {
         }
         
         stage('Clean Cypress Reports') {
-  steps {
-    bat 'rmdir /s /q cypress\\reports || exit 0'
-  }
-}
+        steps {
+            bat 'rmdir /s /q cypress\\reports || exit 0'
+             }
+           }
 
         // stage('Run Cypress Tests') {
         //     steps {
@@ -60,11 +60,11 @@ pipeline {
                         bat 'npx cypress run --env TAGS="@regression"'
                     }
                 }
-                //    stage("UAT"){
-                //     steps{
-                //         bat 'npx cypress run --env TAGS="@UAT"'
-                //     }
-                // }
+                   stage("UAT"){
+                    steps{
+                        bat 'npx cypress run --env TAGS="@UAT"'
+                    }
+                }
             }
         }
 
