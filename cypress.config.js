@@ -55,7 +55,7 @@ module.exports = defineConfig({
     specPattern: "**/*.feature",
       // ✅ ADD TAG FILTER HERE
     env: {
-      TAGS: "@smoke"   // change to @regression when needed
+      TAGS: "@smoke or @regression or @UAT"   // change to @regression when needed
     },
     async setupNodeEvents(on, config) {
       // BDD plugin
