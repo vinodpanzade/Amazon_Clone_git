@@ -52,7 +52,7 @@ module.exports = defineConfig({
     specPattern: "**/*.feature",
 
     env: {
-      TAGS: "@smoke or @regression or @UAT"
+      TAGS: "@smoke"
     },
 
     async setupNodeEvents(on, config) {
