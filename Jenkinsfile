@@ -136,27 +136,23 @@ pipeline {
                     url: 'https://github.com/vinodpanzade/Amazon_clone_git.git'
             }
         }
-
         stage('Install Dependencies') {
             steps {
                 bat 'npm ci'
             }
         }
-
         stage('Run Smoke Tests') {
             steps {
                 bat 'npx cypress run --env TAGS="@smoke"'
             }
         }
-
     }
-
     post {
         success {
-            echo '✅ Smoke Tests Passed'
+            echo '✅ Smoke Tests Pass'
         }
         failure {
-            echo '❌ Tests Failed - Check Logs'
+            echo '❌ Tests Failed '
         }
     }
 }
